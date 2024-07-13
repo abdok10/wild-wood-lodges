@@ -37,7 +37,6 @@ export default function RootLayout({
         <div className="flex-1 px-8 py-12 grid">
           <main className="max-w-7xl mx-auto w-full">{children}</main>
         </div>
-        <footer className="text-center py-4 border-t">copyright 2024</footer>
       </body>
     </html>
   );
