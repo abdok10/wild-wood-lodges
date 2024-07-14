@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Header from "@components/Header";
 import { Josefin_Sans } from "next/font/google";
 import "./globals.css";
+import NextTopLoader from "nextjs-toploader";
 
 const josefin = Josefin_Sans({
   subsets: ["latin"],
@@ -32,6 +33,9 @@ export default function RootLayout({
       <body
         className={`${josefin.className} antialiased bg-primary-950 text-primary-50 min-h-screen flex flex-col relative`}
       >
+        <NextTopLoader 
+          color="#5E82A6"
+        />
         <Header />
 
         <div className="flex-1 px-8 py-12 grid">

@@ -1,8 +1,13 @@
 import Image from "next/image";
 import image1 from "@/public/about-1.jpg";
+import { Cinzel_Decorative } from "next/font/google";
 // import image2 from "@/public/about-2.jpg";
 
-export const revalidate = 86400;
+const cinzel = Cinzel_Decorative({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "700", "700"],
+});
 
 export const metadata = {
   title: "About",
@@ -12,7 +17,9 @@ export default async function Page() {
   return (
     <div className="grid grid-cols-5 gap-x-24 gap-y-32 text-lg items-center">
       <div className="col-span-3">
-        <h1 className="text-4xl mb-10 text-accent-400 font-medium">
+        <h1
+          className={`${cinzel.className} text-4xl mb-10 text-accent-400 font-[700]`}
+        >
           Welcome to The Wild Oasis
         </h1>
 
@@ -51,7 +58,7 @@ export default async function Page() {
       {/* trying to achieve auto responsiveness as in the image before */}
       <div className="relative aspect-square col-span-2">
         <Image
-          src={"/about-2.jpg"}  
+          src={"/about-2.jpg"}
           fill
           alt="Family that manages The Wild Oasis"
           quality={80}
@@ -59,7 +66,9 @@ export default async function Page() {
       </div>
 
       <div className="col-span-3">
-        <h1 className="text-4xl mb-10 text-accent-400 font-medium">
+        <h1
+          className={`${cinzel.className} text-4xl mb-10 text-accent-400 font-bold`}
+        >
           Managed by our family since 1962
         </h1>
 
