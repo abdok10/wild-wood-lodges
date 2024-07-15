@@ -33,9 +33,9 @@ export default function RootLayout({
       <body
         className={`${josefin.className} antialiased bg-primary-950 text-primary-50 min-h-screen flex flex-col relative`}
       >
-        <NextTopLoader 
+        {/* <NextTopLoader 
           color="#5E82A6"
-        />
+        /> */}
         <Header />
 
         <div className="flex-1 px-8 py-12 grid">
