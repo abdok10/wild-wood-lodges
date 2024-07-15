@@ -1,6 +1,5 @@
 import Cabin from "@components/Cabin";
 import { getCabin, getCabins } from "@lib/data-service";
-import { unstable_noStore as noStore } from "next/cache";
 
 type ParamsProps = {
   params: { cabinId: number };
@@ -23,7 +22,6 @@ export async function generateStaticParams() {
 }
 
 export default async function CabinDetails({ params }: ParamsProps) {
-  noStore()
   const cabin = await getCabin(params.cabinId);
   return (
     <div className="max-w-6xl mx-auto mt-8">
