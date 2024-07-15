@@ -1,11 +1,21 @@
+import Cabin from "@components/Cabin";
 import { getCabin } from "@lib/data-service";
 
-export default async function CabinDetails({
-  params,
-}: {
-  params: { cabinId: string };
-}) {
-  const cabin = await getCabin(+params.cabinId);
+type ParamsProps = {
+  params: { cabinId: number };
+};
+
+export async function generateMetadata({ params }: ParamsProps) {
+  const { name } = await getCabin(params.cabinId);
+  console.log("---------------", name);
+  return {
+    title: `Cabin ${name}`,
+    description: "Get all the details about a cabin and reserve it today.",
+  };
+}
+
+export default async function CabinDetails({ params }: ParamsProps) {
+  const cabin = await getCabin(params.cabinId);
   return (
     <div className="max-w-6xl mx-auto mt-8">
       <Cabin cabin={cabin} />

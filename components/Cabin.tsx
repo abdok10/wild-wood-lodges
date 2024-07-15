@@ -1,7 +1,7 @@
 import Image from "next/image";
+import TextExpander from "@components/TextExpander";
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
 import { CabinProps } from "@lib/types";
-import TextExpander from "./textExpander";
 
 function Cabin({ cabin }: { cabin: CabinProps }) {
   const { id, name, maxCapacity, regularPrice, discount, image, description } =
@@ -12,7 +12,7 @@ function Cabin({ cabin }: { cabin: CabinProps }) {
       <div className="relative scale-[1.15] -translate-x-3">
         <Image
           src={image}
-          fill
+          fill 
           className="object-cover"
           alt={`Cabin ${name}`}
         />
