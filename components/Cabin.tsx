@@ -12,7 +12,7 @@ function Cabin({ cabin }: { cabin: CabinProps }) {
       <div className="relative scale-[1.15] -translate-x-3">
         <Image
           src={image}
-          fill 
+          fill
           className="object-cover"
           alt={`Cabin ${name}`}
         />
@@ -24,7 +24,7 @@ function Cabin({ cabin }: { cabin: CabinProps }) {
         </h3>
 
         <p className="text-lg text-primary-300 mb-10">
-          <TextExpander>{description}</TextExpander>
+          <TextExpander>{description}</TextExpander> 
         </p>
 
         <ul className="flex flex-col gap-4 mb-7">

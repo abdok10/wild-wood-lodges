@@ -1,4 +1,4 @@
-import ReservationList from "@components/ReservationList";
+// import ReservationList from "@components/ReservationList";
 
 export const metadata = {
   title: "Reservations",
@@ -21,7 +21,8 @@ export default async function Page() {
           </a>
         </p>
       ) : (
-        <ReservationList bookings={bookings} />
+        // <ReservationList bookings={bookings} />
+        <></>
       )}
     </div>
   );

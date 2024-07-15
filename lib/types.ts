@@ -4,6 +4,6 @@ export type CabinProps = {
   maxCapacity: number;
   regularPrice: number;
   discount: number;
-  description: string;
+  description?: string;
   image: string;
 };
