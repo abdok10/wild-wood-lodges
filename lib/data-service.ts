@@ -1,6 +1,7 @@
 import { eachDayOfInterval } from "date-fns";
 import { supabase } from "@lib/supabase";
 import { notFound } from "next/navigation";
+import { BookingTypes, GuestTypes } from "@lib/types";
 
 export async function getCabin(id: number) {
   const { data, error } = await supabase
@@ -44,7 +45,7 @@ export const getCabins = async function () {
   return data;
 };
 
-export async function getGuest(email) {
+export async function getGuest(email: string) {
   const { data, error } = await supabase
     .from("guests")
     .select("*")
@@ -54,7 +55,7 @@ export async function getGuest(email) {
   return data;
 }
 
-export async function getBooking(id) {
+export async function getBooking(id: number) {
   const { data, error, count } = await supabase
     .from("bookings")
     .select("*")
@@ -69,7 +70,7 @@ export async function getBooking(id) {
   return data;
 }
 
-export async function getBookings(guestId) {
+export async function getBookings(guestId: number) {
   const { data, error, count } = await supabase
     .from("bookings")
     .select(
@@ -86,10 +87,14 @@ export async function getBookings(guestId) {
   return data;
 }
 
-export async function getBookedDatesByCabinId(cabinId) {
-  let today = new Date();
+export async function getBookedDatesByCabinId(
+  cabinId: number
+): Promise<Date[]> {
+  let today: Date | string = new Date();
   today.setUTCHours(0, 0, 0, 0);
   today = today.toISOString();
+
+  await new Promise((res) => setTimeout(res, 5000));
 
   const { data, error } = await supabase
     .from("bookings")
@@ -137,7 +142,7 @@ export async function getCountries() {
   }
 }
 
-export async function createGuest(newGuest) {
+export async function createGuest(newGuest: GuestTypes) {
   const { data, error } = await supabase.from("guests").insert([newGuest]);
 
   if (error) {

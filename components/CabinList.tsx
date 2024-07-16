@@ -1,15 +1,14 @@
 import CabinCard from "@components/CabinCard";
 import { getCabins } from "@lib/data-service";
-import { CabinProps, FilterType } from "@lib/types";
+import { CabinTypes, FilterTypes } from "@lib/types";
 import { unstable_noStore as noStore } from "next/cache";
 
-
-async function CabinList({ filter }: { filter: FilterType }) {
+async function CabinList({ filter }: { filter: FilterTypes }) {
   noStore();
   const cabins = await getCabins();
   if (!cabins.length) return null;
 
-  let filteredCabins: CabinProps[] = [];
+  let filteredCabins: CabinTypes[] = [];
 
   if (filter === "all") {
     filteredCabins = cabins;

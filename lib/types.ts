@@ -1,4 +1,4 @@
-export type CabinProps = {
+export type CabinTypes = {
   id: number;
   name: string;
   maxCapacity: number;
@@ -8,4 +8,42 @@ export type CabinProps = {
   image: string;
 };
 
-export type FilterType = "all" | "small" | "medium" | "large";
+export type FilterTypess = "all" | "small" | "medium" | "large";
+
+export type GuestTypes = {
+  id: number;
+  fullName: string;
+  email: string;
+  nationalID: string;
+  nationality: string;
+  countryFlag: string;
+};
+
+export type SettingsTypes = {
+  minBookingLength: number;
+  maxBookingLength: number;
+  maxGuestsPerBooking: number;
+  breakfastPrice: number;
+};
+
+export type BookingTypes = {
+  id: number;
+  startDate: Date;
+  endDate: Date;
+  numNights: number;
+  numGuests: number;
+  cabinPrice: number;
+  extrasPrice: number;
+  totalPrice: number;
+  status: string;
+  hasBreakfast: boolean;
+  isPaid: boolean;
+  observations: string;
+  cabinId: number;
+  guestId: number;
+};
+
+export type CountryTypes = {
+  name: string;
+  flag: string;
+};

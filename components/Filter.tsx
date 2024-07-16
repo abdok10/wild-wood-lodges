@@ -1,6 +1,6 @@
 "use client";
 
-import { FilterType } from "@lib/types";
+import { FilterTypes } from "@lib/types";
 import clsx from "clsx";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
@@ -9,9 +9,10 @@ export const Filter = () => {
   const router = useRouter();
   const pathName = usePathname();
 
-  const activeFilter: FilterType = (searchParams.get("capacity") as FilterType) ?? "all";
+  const activeFilter: FilterTypes =
+    (searchParams.get("capacity") as FilterTypes) ?? "all";
 
-  const handleFilter = (filter: FilterType) => {
+  const handleFilter = (filter: FilterTypes) => {
     console.log(filter);
     const params = new URLSearchParams(searchParams);
     params.set("capacity", filter);
@@ -19,7 +20,7 @@ export const Filter = () => {
     router.replace(`${pathName}?${params.toString()}`, { scroll: false });
   };
 
-  const filterSys: { name: string; capacity: FilterType }[] = [
+  const filterSys: { name: string; capacity: FilterTypes }[] = [
     {
       name: "All cabins",
       capacity: "all",

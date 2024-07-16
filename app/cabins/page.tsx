@@ -1,7 +1,7 @@
 import CabinList from "@components/CabinList";
 import { Filter } from "@components/Filter";
 import Spinner from "@components/Spinner";
-import { FilterType } from "@lib/types";
+import { FilterTypess } from "@lib/types";
 import { Suspense } from "react";
 
 // export const revalidate = 3600; // 1 hour
@@ -12,12 +12,11 @@ export const metadata = {
 };
 
 type SearchParamsProps = {
-  searchParams: { capacity: FilterType | string[] | undefined };
+  searchParams: { capacity: FilterTypess | string[] | undefined };
 };
 
-
 export default function Page({ searchParams }: SearchParamsProps) {
-  const filter = searchParams?.capacity as FilterType ?? "all";
+  const filter = (searchParams?.capacity as FilterTypess) ?? "all";
   return (
     <div>
       <h1 className="text-4xl mb-5 text-accent-400 font-medium">

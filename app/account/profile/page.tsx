@@ -1,13 +1,14 @@
-// import UpdateProfileForm from "@components/UpdateProfileForm";
+import UpdateProfileForm from "@components/UpdateProfileForm";
 import SelectCountry from "@components/SelectCountry";
+import { getGuest } from "@lib/data-service";
 
 export const metadata = {
   title: "Update profile",
 };
 
 export default async function Page() {
+  // const guest = await getGuest();
   const guest = { nationality: "" };
-
   return (
     <div>
       <h2 className="font-semibold text-2xl text-accent-400 mb-4">
@@ -19,14 +20,14 @@ export default async function Page() {
         faster and smoother. See you soon!
       </p>
 
-      {/* <UpdateProfileForm guest={guest}>
+      <UpdateProfileForm guest={guest}>
         <SelectCountry
           name="nationality"
           id="nationality"
           className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
           defaultCountry={guest.nationality}
         />
-      </UpdateProfileForm> */}
+      </UpdateProfileForm>
     </div>
   );
 }
