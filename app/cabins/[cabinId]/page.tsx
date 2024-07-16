@@ -1,6 +1,8 @@
 import Cabin from "@components/Cabin";
 import { getCabin, getCabins } from "@lib/data-service";
 
+export const revalidate = 0;
+
 type ParamsProps = {
   params: { cabinId: number };
 };

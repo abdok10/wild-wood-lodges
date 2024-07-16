@@ -1,5 +1,7 @@
 import CabinList from "@components/CabinList";
+import { Filter } from "@components/Filter";
 import Spinner from "@components/Spinner";
+import { FilterType } from "@lib/types";
 import { Suspense } from "react";
 
 // export const revalidate = 3600; // 1 hour
@@ -9,7 +11,13 @@ export const metadata = {
   title: "Cabins",
 };
 
-export default function Page() {
+type SearchParamsProps = {
+  searchParams: { capacity: FilterType | string[] | undefined };
+};
+
+
+export default function Page({ searchParams }: SearchParamsProps) {
+  const filter = searchParams?.capacity as FilterType ?? "all";
   return (
     <div>
       <h1 className="text-4xl mb-5 text-accent-400 font-medium">
@@ -24,9 +32,11 @@ export default function Page() {
         Welcome to paradise.
       </p>
 
-      {/* <div className="flex justify-end mb-8"><Filter /></div> */}
-      <Suspense fallback={<Spinner />}>
-        <CabinList />
+      <div className="flex justify-end mb-8">
+        <Filter />
+      </div>
+      <Suspense fallback={<Spinner />} key={filter}>
+        <CabinList filter={filter} />
       </Suspense>
     </div>
   );
