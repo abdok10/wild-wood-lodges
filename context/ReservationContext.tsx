@@ -1,4 +1,5 @@
 "use client";
+
 import {
   createContext,
   Dispatch,
@@ -7,54 +8,34 @@ import {
   useState,
 } from "react";
 
-interface DateRangeType {
-  from: Date | undefined;
-  to: Date | undefined;
-}
+type RangeType = { from: Date | undefined; to: Date | undefined };
 
-interface ReservationContextType {
-  range: DateRangeType;
-  setRange: Dispatch<SetStateAction<DateRangeType>>;
-  resetRange: () => void;
-}
-
-const initialState: ReservationContextType = {
-  range: { from: undefined, to: undefined },
-  setRange: () => {},
-  resetRange: () => {},
-};
-const reservationContext = createContext<ReservationContextType>(initialState);
-
-const ReservationProvider = ({ children }: { children: React.ReactNode }) => {
-  const [range, setRange] = useState<DateRangeType>({
-    from: undefined,
-    to: undefined,
-  });
-
-  const resetRange = () => {
-    setRange(initialState);
-  };
-  return (
-    <reservationContext.Provider
-      value={{
-        range,
-        setRange,
-        resetRange,
-      }}
-    >
-      {children}
-    </reservationContext.Provider>
-  );
-};
-
-const useReservation = () => {
-  const context = useContext(reservationContext);
-
-  if (context === undefined) {
-    throw new Error("useReservation must be used within a ReservationContext");
+const ReservationContext = createContext(
+  undefined as unknown as {
+    range: RangeType;
+    setRange: Dispatch<SetStateAction<{ from: undefined; to: undefined }>>;
+    resetRange: () => void;
   }
+);
+const initialState = { from: undefined, to: undefined };
 
+function ReservationProvider({ children }: { children: React.ReactNode }) {
+  const [range, setRange] = useState(initialState);
+  const resetRange = () => setRange(initialState);
+
+  return (
+    <ReservationContext.Provider value={{ range, setRange, resetRange }}>
+      {children}
+    </ReservationContext.Provider>
+  );
+}
+
+function useReservation() {
+  const context = useContext(ReservationContext);
+
+  if (context === undefined)
+    throw new Error("Context was used outside provider!");
   return context;
-};
+}
 
 export { ReservationProvider, useReservation };

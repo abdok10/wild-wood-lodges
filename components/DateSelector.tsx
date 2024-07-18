@@ -6,7 +6,16 @@ import { isWithinInterval } from "date-fns";
 import { DayPicker, SelectRangeEventHandler } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 
-function isAlreadyBooked(range, datesArr) {
+interface DateRangeType {
+  from: Date;
+  to: Date;
+}
+
+function isAlreadyBooked(
+  range: DateRangeType,
+  datesArr: (string | number | Date)[]
+) {
+  if (!range || !range.from || !range.to) return false;
   return (
     range.from &&
     range.to &&
@@ -31,7 +40,8 @@ function DateSelector({ cabin, settings, bookedDates }: DateSelectorProps) {
 
   const { minBookingLength, maxBookingLength } = settings;
 
-  const handleSelect: SelectRangeEventHandler = setRange as SelectRangeEventHandler;
+  const handleSelect: SelectRangeEventHandler =
+    setRange as SelectRangeEventHandler;
 
   return (
     <div className="flex flex-col justify-between">
