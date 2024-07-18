@@ -1,12 +1,18 @@
+"use client";
+import { useReservation } from "@context/ReservationContext";
 import { CabinTypes } from "@lib/types";
 
 function ReservationForm({ cabin }: { cabin: CabinTypes }) {
+  const { range } = useReservation();
   const { maxCapacity } = cabin;
 
   return (
     <div className="scale-[1.01]">
       <div className="bg-primary-800 text-primary-300 px-16 py-2 flex justify-between items-center">
         <p>Logged in as</p>
+        <p>
+          From: {String(range.from)} to {String(range.to)}
+        </p>
 
         {/* <div className='flex gap-4 items-center'>
           <img

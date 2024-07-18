@@ -94,7 +94,7 @@ export async function getBookedDatesByCabinId(
   today.setUTCHours(0, 0, 0, 0);
   today = today.toISOString();
 
-  await new Promise((res) => setTimeout(res, 5000));
+  // await new Promise((res) => setTimeout(res, 5000));
 
   const { data, error } = await supabase
     .from("bookings")
