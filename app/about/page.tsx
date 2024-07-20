@@ -24,7 +24,7 @@ export default async function Page() {
         <h1
           className={`${cinzel.className} text-4xl mb-10 text-accent-400 font-[700]`}
         >
-          Welcome to The Wild Oasis NEW
+          Welcome to The Wild Oasis
         </h1>
 
         <div className="space-y-8">
