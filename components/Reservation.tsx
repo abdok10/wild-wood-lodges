@@ -2,12 +2,16 @@ import DateSelector from "@components/DateSelector";
 import ReservationForm from "@components/ReservationForm";
 import { CabinTypes } from "@lib/types";
 import { getBookedDatesByCabinId, getSettings } from "@lib/data-service";
+import { auth } from "@lib/auth";
+import LoginMessage from "@components/LoginMessage";
 
 export default async function Reservation({ cabin }: { cabin: CabinTypes }) {
   const [settings, bookedDates] = await Promise.all([
     getSettings(),
     getBookedDatesByCabinId(cabin.id),
   ]);
+  const session = await auth();
+
   return (
     <div className="grid grid-cols-2 border border-primary-800 min-h-[400px]">
       <DateSelector
@@ -15,7 +19,7 @@ export default async function Reservation({ cabin }: { cabin: CabinTypes }) {
         settings={settings}
         bookedDates={bookedDates}
       />
-      <ReservationForm cabin={cabin} />
+      {session?.user ? <ReservationForm cabin={cabin} user={session.user}/> : <LoginMessage />}
     </div>
   );
 }
