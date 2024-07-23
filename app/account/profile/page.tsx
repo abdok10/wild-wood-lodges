@@ -1,14 +1,16 @@
 import UpdateProfileForm from "@components/UpdateProfileForm";
 import SelectCountry from "@components/SelectCountry";
 import { getGuest } from "@lib/data-service";
+import { auth } from "@lib/auth";
 
 export const metadata = {
   title: "Update profile",
 };
 
 export default async function Page() {
-  // const guest = await getGuest();
-  const guest = { nationality: "" };
+  const session = await auth();
+  const guest = await getGuest(session.user.email);
+  console.log(guest);
   return (
     <div>
       <h2 className="font-semibold text-2xl text-accent-400 mb-4">

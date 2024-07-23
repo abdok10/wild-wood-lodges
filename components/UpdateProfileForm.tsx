@@ -3,7 +3,7 @@
 import { useState } from "react";
 import SubmitButton from "@components/SubmitButton";
 import { GuestTypes } from "@lib/types";
-// import { updateGuest } from "@lib/actions";
+import { updateGuest } from "@lib/actions";
 
 function UpdateProfileForm({
   guest,
@@ -17,7 +17,7 @@ function UpdateProfileForm({
 
   return (
     <form
-      //   action={updateGuest}
+      action={updateGuest}
       className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col"
     >
       <div className="space-y-2">

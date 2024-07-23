@@ -17,6 +17,15 @@ export type GuestTypes = {
   nationalID: string;
   nationality: string;
   countryFlag: string;
+
+  guestId?: number;
+};
+
+export type UserTypes = {
+  name: string;
+  email: string;
+  image: string;
+  guestId?: number;
 };
 
 export type SettingsTypes = {
