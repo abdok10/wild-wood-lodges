@@ -153,17 +153,17 @@ export async function createGuest(newGuest: GuestTypes) {
   return data;
 }
 
-// export async function createBooking(newBooking) {
-// 	const { data, error } = await supabase
-// 		.from('bookings')
-// 		.insert([newBooking])
-// 		.select()
-// 		.single();
-//
-// 	if (error) {
-// 		console.error(error);
-// 		throw new Error('Booking could not be created');
-// 	}
-//
-// 	return data;
-// }
+export async function createBooking(newBooking) {
+	const { data, error } = await supabase
+		.from('bookings')
+		.insert([newBooking])
+		.select()
+		.single();
+
+	if (error) {
+		console.error(error);
+		throw new Error('Booking could not be created');
+	}
+
+	return data;
+}
