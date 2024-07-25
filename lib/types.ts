@@ -24,8 +24,8 @@ export type GuestTypes = {
 export type UserTypes = {
   name: string;
   email: string;
-  image: string;
-  guestId?: number;
+  image: string;w
+  guestId?: number; 
 };
 
 export type SettingsTypes = {
