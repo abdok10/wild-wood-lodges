@@ -8,7 +8,7 @@ const authConfig = {
     Google({
       clientId: process.env.AUTH_GOOGLE_ID,
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
-    }),w
+    }),
   ],
 
   callbacks: {
@@ -22,7 +22,7 @@ const authConfig = {
         if (!existingGuest)
           await createGuest({ email: user.email, fullName: user.name });
         return true;
-      } catch {w
+      } catch {
         return false;
       }
     },
