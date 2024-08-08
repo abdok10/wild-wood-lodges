@@ -19,7 +19,7 @@ export default async function Page() {
 
       <p className="text-lg mb-8 text-primary-200">
         Providing the following information will make your check-in process
-        faster and smoother. See you soon!
+        faster and smoother. See you soon buddy!
       </p>
 
       <UpdateProfileForm guest={guest}>
