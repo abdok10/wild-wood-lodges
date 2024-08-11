@@ -14,7 +14,7 @@ export default async function Page() {
   return (
     <div>
       <h2 className="font-semibold text-2xl text-accent-400 mb-4">
-        Update your guest profile soon
+        Update your guest profi
       </h2>
 
       <p className="text-lg mb-8 text-primary-200">
