@@ -8,7 +8,7 @@ export type CabinTypes = {
   image: string;
 };
 
-export type FilterTypess = "all" | "small" | "medium" | "large";
+export type FilterTypes = "all" | "small" | "medium" | "large";
 
 export type GuestTypes = {
   id: number;
@@ -24,7 +24,7 @@ export type GuestTypes = {
 export type UserTypes = {
   name: string;
   email: string;
-  image: string;w
+  image: string;
   guestId?: number; 
 };
 

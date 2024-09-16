@@ -1,4 +1,5 @@
-import NextAuth from "next-auth";
+import NextAuth, { Session, User } from "next-auth";
+import AuthOptions from "next-auth";
 import Google from "next-auth/providers/google";
 import { createGuest, getGuest } from "./data-service";
 import { UserTypes } from "./types";
@@ -12,17 +13,18 @@ const authConfig = {
   ],
 
   callbacks: {
-    authorized({ auth, request }) {
+    authorized({ auth, request }: { auth: any; request: any }) {
       return !!auth?.user;
     },
 
     async signIn({ user }: { user: UserTypes }) {
       try {
-        const existingGuest = await getGuest(user.email);
+        const existingGuest = await getGuest(user.email!);
         if (!existingGuest)
-          await createGuest({ email: user.email, fullName: user.name });
+          await createGuest({ email: user.email!, fullName: user.name! });
         return true;
-      } catch {
+      } catch (error) {
+        console.error("Error in signIn: ", error);
         return false;
       }
     },

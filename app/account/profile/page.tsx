@@ -9,6 +9,11 @@ export const metadata = {
 
 export default async function Page() {
   const session = await auth();
+
+  if (!session || !session.user || !session.user.email) {
+    return null; // Or some fallback UI if necessary
+  }
+  
   const guest = await getGuest(session.user.email);
   console.log(guest);
   return (

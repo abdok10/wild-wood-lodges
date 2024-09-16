@@ -153,7 +153,7 @@ export async function createGuest(newGuest: GuestTypes) {
   return data;
 }
 
-export async function createBooking(newBooking) {
+export async function createBooking(newBooking : BookingTypes) {
 	const { data, error } = await supabase
 		.from('bookings')
 		.insert([newBooking])
