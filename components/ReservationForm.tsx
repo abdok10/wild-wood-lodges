@@ -5,8 +5,8 @@ import { CabinTypes } from "@lib/types";
 type ReservationFormProps = {
   cabin: CabinTypes;
   user: {
-    name: string;
-    image: string;
+    name?: string;
+    image?: string;
   };
 };
 

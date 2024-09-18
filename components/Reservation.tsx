@@ -19,7 +19,17 @@ export default async function Reservation({ cabin }: { cabin: CabinTypes }) {
         settings={settings}
         bookedDates={bookedDates}
       />
-      {session?.user ? <ReservationForm cabin={cabin} user={session.user}/> : <LoginMessage />}
+      {session?.user ? (
+        <ReservationForm
+          cabin={cabin}
+          user={{
+            name: session.user.name ?? "Guest",
+            image: session.user.image ?? "",
+          }}
+        />
+      ) : (
+        <LoginMessage />
+      )}
     </div>
   );
 }
