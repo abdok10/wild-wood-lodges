@@ -9,11 +9,6 @@ const josefin = Josefin_Sans({
   display: "swap",
 });
 
-// import localFont from "next/font/local";
-// const myFont = localFont({ src: "./Waldorf Astoria.ttf" });
-
-// console.log(myFont)
-
 export const metadata: Metadata = {
   title: {
     template: "%s / The Wild Oasis",
