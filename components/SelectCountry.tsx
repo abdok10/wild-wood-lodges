@@ -8,7 +8,7 @@ type SelectCountryProps = {
   className?: string;
 };
 
-type CountryFlag = {
+type Country = {
   name: string;
   flag: string;
 };
@@ -20,10 +20,12 @@ async function SelectCountry({
   className,
 }: SelectCountryProps) {
   const countries: CountryTypes[] = await getCountries();
-  const flag =
-    countries.find((country: CountryFlag) => country.name === defaultCountry)
-      ?.flag ?? "";
 
+  const flag =
+    countries.find(
+      (country: Country) =>
+        country.name?.toLowerCase() === defaultCountry?.toLowerCase()
+    )?.flag ?? "";
 
   return (
     <select
@@ -34,7 +36,7 @@ async function SelectCountry({
       className={className}
     >
       <option value="">Select country...</option>
-      {countries.map((c: CountryFlag) => (
+      {countries.map((c: Country) => (
         <option key={c.name} value={`${c.name}%${c.flag}`}>
           {c.name}
         </option>

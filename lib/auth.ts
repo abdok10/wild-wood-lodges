@@ -2,8 +2,6 @@ import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import Github from "next-auth/providers/github";
 import { createGuest, getGuest } from "./data-service";
-import { UserTypes } from "./types";
-
 
 const authConfig = {
   providers: [
@@ -14,7 +12,7 @@ const authConfig = {
     Github({
       clientId: process.env.AUTH_GITHUB_ID,
       clientSecret: process.env.AUTH_GITHUB_SECRET,
-    })
+    }),
   ],
 
   callbacks: {
@@ -22,7 +20,7 @@ const authConfig = {
       return !!auth?.user;
     },
 
-    async signIn({ user }: { user: UserTypes }) {
+    async signIn({ user }: { user: any }) {
       try {
         const existingGuest = await getGuest(user.email!);
         if (!existingGuest)
@@ -34,9 +32,10 @@ const authConfig = {
       }
     },
 
-    async session({ session } : { session: any }) {
+    async session({ session }: { session: any }) {
       const guest = await getGuest(session.user.email);
-      session.user.guestId = guest.id;
+      session.user.id = guest.id;
+      console.log({ session });
       return session;
     },
   },

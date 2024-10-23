@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import SubmitButton from "@components/SubmitButton";
 import { GuestTypes } from "@lib/types";
 import { updateGuest } from "@lib/actions";
@@ -12,7 +11,6 @@ function UpdateProfileForm({
   guest: GuestTypes;
   children: React.ReactNode;
 }) {
-  const [count, setCount] = useState();
   console.log({ guest });
   const { fullName, email, nationality, nationalID, countryFlag } = guest;
 
@@ -63,7 +61,7 @@ function UpdateProfileForm({
         />
       </div>
 
-      <div className="flex justify-end items-center gap-6">
+      <div className="flex justify-end">
         <SubmitButton pendingLabel="Updating...">Update profile</SubmitButton>
       </div>
     </form>
