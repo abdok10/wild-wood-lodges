@@ -1,11 +1,16 @@
-// import ReservationList from "@components/ReservationList";
+import ReservationList from "@/components/ReservationList";
+
+import { auth } from "@lib/auth";
+import { getBookings } from "@lib/data-service";
 
 export const metadata = {
   title: "Reservations",
 };
 
 export default async function Page() {
-  const bookings: any = [];
+  const session = await auth();
+  if (!session || !session.user || !session.user.id) return;
+  const bookings = await getBookings(+session.user?.id);
 
   return (
     <div>
@@ -21,8 +26,7 @@ export default async function Page() {
           </a>
         </p>
       ) : (
-        // <ReservationList bookings={bookings} />
-        <></>
+        <ReservationList bookings={bookings} />
       )}
     </div>
   );
